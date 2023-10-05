@@ -1,0 +1,60 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index</title>
+    <link href="/css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+</head>
+body>
+    <div class="topnav">
+        <a class="active" href="/">Home</a>
+        <a href="#new">New</a>
+        <a href="#about">About</a>
+        <a href="#login">Login</a>
+    </div>
+    <div class="card">
+        <div class="card-header">
+            <ul class="nav nav-pills w-100">
+                <il class="nav-pill active">
+                    <a class="nav-link">Users</a>
+                </il>
+                <il class="nav-pill ml-auto">
+                    <a class="nav-link active" href="/add">Add Users</a>
+                </il>
+            </ul>
+        </div>
+        <div class="card-body">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Phone</th>
+                        <th scope="col">Email</th>
+                        <th width="200px">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% for (var i=0;i<datauser.length;i++){ %>
+                    <tr>
+                        <td><%=datauser[i].id %></td>
+                        <td><%=datauser[i].name %></td>
+                        <td><%=datauser[i].phone %></td>
+                        <td><%=datauser[i].email %></td>
+                        <td>                           
+                            <a class="btn btn-success edit" href="/edit-user/<%=datauser[i].id %>">Edit</a>
+                            <input type="text" hidden value="<%=datauser[i].id %>" name="id">
+                            <form action="delete-user" method="post">
+                                  <input type="text" hidden value="<%=datauser[i].id %>" name="id">
+                                <button type="submit" class="btn-danger">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                    <% } %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
